@@ -3,7 +3,7 @@
 //use this for valina Javascript.
 'use strict';
 
-//2. Variable -변수 : 변경될 수 있는 값
+//2. Variable -변수 : 변경될 수 있는 값, rw(read/write)
 //let (added in ES6) 변수를 추가할 수 있는 함수 (그 전은 var)
 
 //var (dont't ever ues this! 값을 선언하기 전에도 쓸 수 있음 이걸 'var hoistiong'이라고 부름
@@ -21,7 +21,11 @@
 
 
 
-//3. Contants - 변경불가능한 데이터 타입 (favor immutable data type always)
+//3. Contant - 변경불가능한 데이터 타입 (favor immutable data type always), r(read only) -선언함과 값을 할당한 이후로는 읽기만 가능
+// use const whenever possible.
+// only use let if variable needs to change.
+
+// favor immutable data type always for a few reasons:
 // -security
 // -thread safety
 // -reduce human mistakes
@@ -29,9 +33,15 @@
 const daysInWeek = 7;
 const maxNumber = 5;
 
+/////// NOTE ////////
+//data type 구분
+//1. Immutable data types (데이터 자체 변경 불가능) : primitive types, frozen objects
+//2. Mutable data types: all objects by default are mutable in JS
 
 
-//4. Variable types
+
+//2-1. Variable types
+// 메모리가 저장되는 방식 두 가지 : primitive type(값 자체가 메모리에 저장)/ object type(값 자체에 메모리 저장X, object를 가리키는 레퍼런스가 저장)
 // primitive type : number, string, boolean, null, undefiedn, symbol
 // object type : box container
 // function : first-class function
@@ -41,7 +51,7 @@ const size = 17.1; //decimal number (소수점)
 console.log(`value: ${count}, type: ${typeof count}`);
 console.log(`value: ${size}, type: ${typeof size}`);
 
-// 4.1 number - special numeric values: infinity, -infinity, Nan
+// 2-1-1. number - special numeric values: infinity, -infinity, Nan
 
 const infi = 10/0; //양수를 0으로 나눴을 때 (무한대)
 const negainfi = -10/0; //음수를 0으로 나눴을 때
@@ -51,10 +61,10 @@ console.log(infi);
 console.log(negainfi);
 console.log('nan');
 
-// 4.1 번외 bigInt(type값) : 아주 큰 범위의 숫자 --->크롬과 파이어폭스만 지원
+// 번외 bigInt(type값) : 아주 큰 범위의 숫자 --->크롬과 파이어폭스만 지원
 
 
-// 4.2 string - 일반 문자타입 (한가지의 글자든 여러개의 글자든 + 기호 사용 가능)
+// 2-2-2. string - 일반 문자타입 (한가지의 글자든 여러개의 글자든 + 기호 사용 가능)
 const char ='c';
 const ann ='Ann';
 const greeting = 'hello' + ann;
@@ -66,7 +76,7 @@ const helloBob = `hi ${ann}!`; //template literals (변수의 값 자동적으�
 console.log(`value: ${helloBob}, type: ${typeof helloBob}`);
 
 
-// 4.3 boolean (참과 거짓)
+// 2-2-3. boolean (참과 거짓)
 //false :0, bull, undefined, NaN, ''
 //true: any other value
 
@@ -77,17 +87,17 @@ console.log(`value: ${canRead}, type: ${typeof canRead}`);
 console.log(`value: ${test}, type:${typeof test}`);
 
 
-// 4.4 null = 개발자가 명확하게 텅텅 비어있는 값이야 하고 지정함
+// 2-2-4. null = 개발자가 명확하게 텅텅 비어있는 값이야 하고 지정함
 let nothing = null;
 console.log(`value: ${nothing}, type:${typeof nothing}`);
 
 
-// 4.5 undefined - 선언은 되었지만 값이 들어가 있지 않음
+// 2-2-5. undefined - 선언은 되었지만 값이 들어가 있지 않음
 let x;
 console.log(`value: ${x}, type:${typeof x}`);
 
 
-// 4.6 Symbol - 나중에 맵이나 다른 자료구조에서 고유한 식별자가 필요하거나 동시에 다발적으로 일어나는 코드에서 우선순위를 주고 싶을 때 정말 고유한 식별자가 필요할 때 
+// 2-2-6. Symbol - 나중에 맵이나 다른 자료구조에서 고유한 식별자가 필요하거나 동시에 다발적으로 일어나는 코드에서 우선순위를 주고 싶을 때 정말 고유한 식별자가 필요할 때 
 
 const symbol1 = Symbol('id');
 const symbol2 = Symbol('id');
@@ -107,7 +117,7 @@ const Anne = { name: 'Anne', age: 20};
 Anne.age = 21;
 
 
-//5.Dynamic typing : dynamically typed Language = 선언할 때 어떤 타입인지 선언x, 프로그램 동작시 할당된 값에 따라 타입이 변경될 수 있음
+//4.Dynamic typing : dynamically typed Language = 선언할 때 어떤 타입인지 선언x, 프로그램 동작시 할당된 값에 따라 타입이 변경될 수 있음
 let text ='hello';
 console.log(text.charAt(0)); //h
 console.log(`value: ${text}, type:${typeof text}`);
